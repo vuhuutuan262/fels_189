@@ -20,4 +20,14 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  fels: "Framgia E-Learning System"
+  login: "Login to Your Account"
+  home: "Home"
+  about: "About"
+  logout: "Log Out"
+  login: "Login"
+  contact: "Contact us"
+  avatar: "Avatar"
+  fllowing: "Fllowing"
+  listword: "List Word"
+  dolesson: "Do Lesson"
