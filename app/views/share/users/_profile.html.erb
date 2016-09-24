@@ -1,0 +1,34 @@
+<div class="col-lg-6 col-sm-6", id="widthauto">
+  <div class="card hovercard" >
+    <div class="card-background">
+    </div>
+    <div class="useravatar">
+    </div>
+    <div class="card-info"> <span class="card-title"></span>
+    </div>
+  </div>
+  <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
+    <div class="btn-group" role="group">
+      <%= link_to "#" do %>
+        <button type="button" id="favorites" class="btn btn-default" data-toggle="tab">
+          <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+          <div class="hidden-xs"><%= t "avatar" %></div>
+        </button>
+      <% end %>
+    </div>
+    <div class="btn-group" role="group">
+      <%= link_to "#" do %>
+        <button type="button" id="following" class="btn btn-default" data-toggle="tab">
+          <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+          <div class="hidden-xs"><%= t "fllowing" %></div>
+        </button>
+      <% end %>
+    </div>
+  </div>
+  <div class="well">
+    <div class="tab-content">
+      <div class="tab-pane fade in active" id="tab1">
+      </div>
+    </div>
+  </div>
+</div>

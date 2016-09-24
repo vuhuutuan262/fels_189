@@ -1,0 +1,23 @@
+<% provide :title, t("home") %>
+<div id="userprofile">
+  <%= render "share/users/profile" %>
+</div>
+<div id="buttonlist" >
+  <%= link_to "#" do %>
+    <button class="btn btn-dark icon-revealed" id="right">
+      <span class="glyphicon glyphicon-cloud-download"></span>
+      <p><%= t "listword" %></p>
+    </button>
+  <% end %>
+</div>
+<div id="buttonlesson" >
+  <%= link_to "#" do %>
+    <button class="btn btn-dark icon-revealed" id="left">
+      <span class="glyphicon glyphicon-cloud-download"></span>
+      <p><%= t "dolesson" %></p>
+    </button>
+  <% end %>
+</div>
+<div id="result">
+  <%= render "share/result/result" %>
+</div>

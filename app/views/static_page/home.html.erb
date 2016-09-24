@@ -1,0 +1,28 @@
+<% provide :title, t("fels") %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="item active">
+            <%= image_tag "view.jpg" %>
+            <div class="carousel-caption">
+              <h3>
+                <%= t "fels" %></h3>
+            </div>
+          </div>
+        </div>
+        <div class="main-text hidden-xs">
+          <div class="col-md-12 text-center">
+            <div>
+              <%= link_to t("login"), login_path, class: "btn btn-primary btn-circle" %>
+              <%= link_to t("contact"), "#", class: "btn btn-primary btn-circle" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="push">
+  </div>
+</div>
