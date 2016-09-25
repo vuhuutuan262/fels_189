@@ -61,13 +61,13 @@ ActiveRecord::Schema.define(version: 20160923030304) do
     t.string   "password_digest"
     t.string   "remember_digest"
     t.boolean  "admin"
-    t.string   "actiation_digest"
+    t.string   "activation_digest"
     t.boolean  "activated"
     t.datetime "activated_at"
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   create_table "words", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

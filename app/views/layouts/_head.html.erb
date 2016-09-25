@@ -18,8 +18,9 @@
       </div>
       <div class="collapse navbar-collapse" id="navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to t("home"), "#" %></li>
-          <li><%= link_to t("about"), "#" %></li>
+          <li><%= link_to t("home"), root_path %></li>
+          <li><%= link_to t("about"), about_path %></li>
+          <li><%= link_to t("signup"), signup_path %></li>
           <li><%= link_to t("logout"), "#", class: "btn btn-default btn-outline btn-circle" %></li>
         </ul>
       </div>

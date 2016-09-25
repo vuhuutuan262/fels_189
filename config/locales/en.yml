@@ -26,6 +26,7 @@ en:
   about: "About"
   logout: "Log Out"
   login: "Login"
+  signup: "Sign up"
   contact: "Contact us"
   avatar: "Avatar"
   fllowing: "Fllowing"
@@ -35,3 +36,8 @@ en:
   member: "Member"
   category: "Category"
   word: "word"
+  create: "Create account"
+  user_not_found: "User not found"
+
+  message:
+    error: "The form contains %{error_count} errors"
