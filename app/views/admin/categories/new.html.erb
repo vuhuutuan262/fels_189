@@ -1,0 +1,32 @@
+<div class="container-fluid main-container">
+  <%= render "share/admins/admin_navbar" %>
+  <div class="col-md-10 content">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <%= t "category" %>
+      </div>
+      <div class="panel-body">
+        <div class="container">
+          <div class="row">
+            <div id="height150">
+              <div class="col-md-4" >
+                <%= render "share/error_messages", object: @category %>
+              </div>
+              <div class="col-md-4">
+                <h2><%= t "category" %></h2>
+                <%= form_for [:admin, @category], url: admin_categories_path do |f| %>
+                  <%= f.text_field :name, placeholder: t("place_add") %>
+                  <%= f.submit t("add"), class: "btn btn-info", id: "add" %>
+                <% end %>
+                <br/><br/>
+                <div class="list"></div>
+              </div>
+              <div class="col-md-4"></div>
+            </div>
+            <%= render @categories %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

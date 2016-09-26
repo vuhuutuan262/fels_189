@@ -1,9 +1,26 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
-#left{
+#height150 {
+  height: 150px
+}
+#delete-category {
+  float: right;
+}
+#category-all {
+  width: 1000px
+}
+#image-category {
+  width: 50px
+}
+
+#magginright {
+  margin-right: 50px;
+}
+
+#left {
   float: left;
 }
-#right{
+#right {
   float: right;
 }
 

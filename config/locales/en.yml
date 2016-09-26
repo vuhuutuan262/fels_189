@@ -41,6 +41,12 @@ en:
   login_danger: "Invalid email/password combination"
   email: "Email"
   password: "Password"
+  add_category: "Add category successflly"
+  add: "Add"
+  delete: "Delete"
+  place_add: "Add..."
+  delete_sucess: "You sure?"
+  Please_log_in: "Please log in."
 
   message:
     error: "The form contains %{error_count} errors"
