@@ -45,6 +45,11 @@ body, html{
   font-family: "Oxygen", sans-serif;
 }
 
+.main_signup{
+  margin-top: 5px;
+  margin-bottom: 50px;
+}
+
 .main{
   margin-top: 70px;
 }
@@ -815,4 +820,19 @@ h1.page-header {
   .navbar .nav-collapse { margin: 7.5px auto; padding: 0; }
   .navbar .nav-collapse .navbar-form { margin: 0; }
   .nav-collapse>li { float: none; }
+}
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
 }

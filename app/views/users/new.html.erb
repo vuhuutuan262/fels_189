@@ -1,0 +1,68 @@
+<% provide :title, t("signup") %>
+<div class="container">
+  <div class="row main_signup">
+    <div class="panel-heading">
+      <div class="panel-title text-center">
+        <h1 class="title"><%= t "signup" %></h1>
+        <hr/>
+      </div>
+    </div>
+    <div class="main-login main-center">
+      <%= form_for @user, url: signup_path do |f| %>
+        <%= render "share/users/error_messages",  object: @user %>
+
+        <div class="form-group">
+          <%= f.label :name, class: "control-label" %>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="fa fa-user fa" aria-hidden="true"></i>
+              </span>
+              <%= f.text_field :name, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :email, class: "control-label" %>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="fa fa-envelope fa" aria-hidden="true"></i>
+              </span>
+              <%= f.email_field :email, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :password, class: "control-label" %>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
+              </span>
+              <%= f.password_field :password, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+         <%= f.label :password_confirmation, class: "control-label" %>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
+              </span>
+              <%= f.password_field :password_confirmation, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group ">
+          <%= f.submit t("create"), class: "btn btn-primary btn-lg btn-block login-button" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
