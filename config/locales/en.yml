@@ -38,6 +38,9 @@ en:
   word: "word"
   create: "Create account"
   user_not_found: "User not found"
+  login_danger: "Invalid email/password combination"
+  email: "Email"
+  password: "Password"
 
   message:
     error: "The form contains %{error_count} errors"

@@ -9,7 +9,7 @@
     </div>
     <div class="main-login main-center">
       <%= form_for @user, url: signup_path do |f| %>
-        <%= render "share/users/error_messages",  object: @user %>
+        <%= render "share/error_messages",  object: @user %>
 
         <div class="form-group">
           <%= f.label :name, class: "control-label" %>

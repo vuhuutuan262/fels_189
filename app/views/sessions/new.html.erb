@@ -1,0 +1,14 @@
+<% provide :title, "Login" %>
+<div class="modal-dialog">
+  <div class="loginmodal-container">
+    <h1><%= t "login" %></h1><br>
+    <%= form_for :session, url: login_path do |f|%>
+      <%= f.email_field :email, placeholder: t("email") %>
+      <%= f.password_field :password, placeholder: t("password") %>
+      <%= f.submit t("login"), class: "btn btn-primary login loginmodal-submit" %>
+    <% end %> 
+    <div class="login-help">
+      <%= link_to t("signup"), signup_path %>
+    </div>
+  </div>
+</div>
