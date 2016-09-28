@@ -27,9 +27,10 @@ en:
   logout: "Log Out"
   login: "Login"
   signup: "Sign up"
-  contact: "Contact us"
+  contact: "Contact"
   avatar: "Avatar"
-  fllowing: "Fllowing"
+  setting: "Setting"
+  following: "Following"
   listword: "List Word"
   dolesson: "Do Lesson"
   admin: "Administrator"
@@ -41,6 +42,7 @@ en:
   login_danger: "Invalid email/password combination"
   email: "Email"
   password: "Password"
+
   add_category: "Add category successflly"
   add: "Add"
   delete: "Delete"
@@ -56,6 +58,20 @@ en:
   remove: "Remove"
   no_more_than_one: "no more than one"
   required-two-answers: "required two answers"
+
+  edit_user: "Edit user"
+  save_changes: "Save changes"
+  profile_update: "Profile update"
+  please_login: "Please log in"
+  update_your_profile: "Update your profile"
+  update: "Update"
+
+  edit_user: "Edit user"
+  save_changes: "Save changes"
+  profile_update: "Profile update"
+  please_login: "Please log in"
+  update_your_profile: "Update your profile"
+  update: "Update"
 
   message:
     error: "The form contains %{error_count} errors"
