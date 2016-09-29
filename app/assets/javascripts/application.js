@@ -14,3 +14,19 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+function remove_fields(link) {
+  if ($('.check_answers:visible').length > 2) {
+    $(link).closest('#answer_fields').hide()
+    $(link).prev('input[type=hidden]').val('1');
+  }
+  else {
+    alert($('#at-least-two-answers-msg').val())
+  }
+}
+
+function add_fields(link, association, content) {
+  var new_id = new Date().getTime();
+  var regexp = new RegExp('new_' + association, 'g')
+  $(link).before(content.replace(regexp, new_id));
+}

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root "dash_board#index", as: :home
     resources :categories, only: [:index, :new, :create]
+    resources :words, only: [:index, :new, :create]
   end
   get "/about", to: "static_page#about"
   get "/signup", to: "users#new"
