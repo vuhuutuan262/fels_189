@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     user = User.find_by email: params[:session][:email].downcase
     if user && user.authenticate(params[:session][:password])
       log_in user
-      user.admin? ? redirect_to(admin_home_path) : redirect_to(user)
+      user.admin? ? redirect_to(admin_home_path) : redirect_back_or(user)
     else
       flash[:danger] = t "login_danger"
       render :new
