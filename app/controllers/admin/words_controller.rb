@@ -27,8 +27,4 @@ class Admin::WordsController < ApplicationController
     params.require(:word).permit :title, :category_id,
       answers_attributes: [:content, :is_correct,  :_destroy]
   end
-
-  def load_categories
-    @categories = Category.all.collect{|category| [category.name, category.id]}
-  end
 end

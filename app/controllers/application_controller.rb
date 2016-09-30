@@ -13,4 +13,8 @@ class ApplicationController < ActionController::Base
   def verify_admin
     redirect_to root_url unless current_user.admin?
   end
+
+  def load_categories
+    @categories = Category.all.collect{|category| [category.name, category.id]}
+  end
 end

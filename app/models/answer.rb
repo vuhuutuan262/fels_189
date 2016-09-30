@@ -1,5 +1,5 @@
 class Answer < ApplicationRecord
-  has_many :result
+  has_many :results
 
   belongs_to :word, inverse_of: :answers
 

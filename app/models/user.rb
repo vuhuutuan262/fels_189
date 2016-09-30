@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :micropost
-  has_many :lesson
+  has_many :lessons
   has_many :active_relationships, class_name: Relationship.name,
     foreign_key: "follower_id", dependent: :destroy
   has_many :passive_relationships, class_name: Relationship.name,
