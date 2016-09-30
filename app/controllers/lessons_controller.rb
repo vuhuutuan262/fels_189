@@ -34,7 +34,9 @@ class LessonsController < ApplicationController
         flash.now[:danger] = t :timeout
         redirect_to lessons_path
       else
-        @lesson.update_attributes lesson_params
+        @lesson.assign_attributes lesson_params
+        @lesson.assign_attributes score: count_correct_answers
+        @lesson.save
         redirect_to lessons_path
       end
     end
@@ -43,7 +45,7 @@ class LessonsController < ApplicationController
   private
   def lesson_params
     params.require(:lesson).permit :user_id, :category_id, :is_finish,
-      :deadline, results_attributes: [:id, :answer_id, :is_correct]
+      :deadline, :score, results_attributes: [:id, :answer_id, :is_correct]
   end
 
   def find_exam
@@ -51,6 +53,19 @@ class LessonsController < ApplicationController
     if @lesson.nil?
       flash.now[:danger] = t :not_available
       redirect_to lessons_path
+    else
+      check_user_lesson
+    end
+  end
+
+  def count_correct_answers
+    @lesson.results.select{|result| result.answer &&
+      result.answer.is_correct?}.size
+  end
+
+  def check_user_lesson
+    unless current_user.admin? || current_user.current_user?(@lesson.user)
+        redirect_to root_path
     end
   end
 end

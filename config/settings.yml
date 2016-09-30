@@ -4,11 +4,10 @@ size_avatar: "75x75"
 per: 10
 words_minimum: 2
 admin_show_words: 21
-
+deadline_minites: 11
 
 activities:
   learned: learned
   followed: followed
   unfollowed: unfollowed
   start_lesson: start lesson
-
