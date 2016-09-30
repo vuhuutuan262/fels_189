@@ -65,13 +65,11 @@ en:
   please_login: "Please log in"
   update_your_profile: "Update your profile"
   update: "Update"
-
-  edit_user: "Edit user"
-  save_changes: "Save changes"
-  profile_update: "Profile update"
-  please_login: "Please log in"
-  update_your_profile: "Update your profile"
-  update: "Update"
+  all_users: "All users"
+  users: "Users"
+  user_deleted: "User deleted"
 
   message:
     error: "The form contains %{error_count} errors"
+    
+  confirm_sure: "Are you sure?"
