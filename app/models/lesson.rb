@@ -20,9 +20,21 @@ class Lesson < ApplicationRecord
     self.words = category.words.shuffle().take(Settings.words_minimum)
   end
 
+  def time_out?
+    if deadline.nil?
+      return false
+    else
+      Time.zone.now > deadline
+    end
+  end
+
+  def finish?
+    is_finish? || time_out?
+  end
+
   private
   def category_word_count
-    errors.add :category, I18n.t("not_enough") unless category.words.count>=
+    errors.add :category, I18n.t("not_enough") unless category.words.count >=
       Settings.words_minimum
   end
 

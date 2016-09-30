@@ -36,12 +36,22 @@ ActiveRecord::Schema.define(version: 20161005063516) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "lesson_words", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "lesson_id"
+    t.integer  "word_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lesson_id"], name: "index_lesson_words_on_lesson_id", using: :btree
+    t.index ["word_id"], name: "index_lesson_words_on_word_id", using: :btree
+  end
+
   create_table "lessons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
     t.integer  "category_id"
-    t.boolean  "is_status"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.boolean  "is_finish",   default: false
+    t.datetime "deadline"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.index ["category_id"], name: "index_lessons_on_category_id", using: :btree
     t.index ["user_id"], name: "index_lessons_on_user_id", using: :btree
   end
@@ -95,6 +105,8 @@ ActiveRecord::Schema.define(version: 20161005063516) do
 
   add_foreign_key "activities", "users"
   add_foreign_key "answers", "words"
+  add_foreign_key "lesson_words", "lessons"
+  add_foreign_key "lesson_words", "words"
   add_foreign_key "lessons", "categories"
   add_foreign_key "lessons", "users"
   add_foreign_key "results", "answers"

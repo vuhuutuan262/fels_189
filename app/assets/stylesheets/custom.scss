@@ -62,6 +62,112 @@
   height: 35px
 }
 
+#div-show-lesson {
+  float: left;
+  width: 50%;
+  height: 500px
+}
+
+#div-button-next {
+  float: left;
+  width: 40%;
+  height: 150px
+}
+
+#div-button-prev {
+  float: left;
+  width: 60%;
+  height: 150px
+}
+
+.div-space-button-next-prev1 {
+  float: left;
+  width: 100%;
+  height: 150px
+}
+
+.div-space-button-next-prev {
+  float:left;
+  width: 25%;
+  height: 500px
+}
+
+.div-button-start-finish {
+  float: none;
+  margin: 10px;
+  width: 50px;
+  height: 50px;
+}
+
+.div-button-finish-do-lesson {
+  float: left;
+  width: 50%;
+  height: 100px;
+  display: none
+}
+.div-button-start-do-lesson {
+  float: left;
+  width: 50%;
+  height: 100px;
+  display: block
+}
+
+.display-block {
+  display: block;
+}
+
+#div-clock {
+  float: left;
+  width: 50%;
+  height: 100px
+}
+
+.display-none {
+  display: none;
+}
+
+#div-lesson-categories {
+  float: left;
+  width: 50%;
+  height: 100px;
+  text-align: center
+}
+
+.div-space-show-lesson {
+  float: left;
+  width: 25%;
+  height: 100px
+}
+
+.div-answers {
+  float: left;
+  width: 150px;
+  height: 100px
+}
+
+#div-space-answer {
+  float: left;
+  width: 100px;
+  height: 400px
+}
+
+.div-image-words {
+  float: left;
+  width: 60%;
+  height: 400px;
+  background-color: white
+}
+
+#div-stt {
+  float: left;
+  width: 100%;
+  height: 54px
+}
+
+#lesson-question-none {
+  display: none;
+}
+
 .width-350 {
   width: 350px
 }
