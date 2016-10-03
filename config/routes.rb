@@ -6,12 +6,13 @@ Rails.application.routes.draw do
     resources :categories, only: [:index, :new, :create]
     resources :words, only: [:index, :new, :create]
   end
+  resources :users
   get "/about", to: "static_page#about"
   get "/signup", to: "users#new"
   post "/signup", to: "users#create"
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
-  resources :users
   resources :lessons, only: [:index, :new, :create]
+  resources :relationships, only: [:index, :create, :destroy]
 end

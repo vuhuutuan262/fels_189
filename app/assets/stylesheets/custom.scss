@@ -862,3 +862,47 @@ h1.page-header {
     color: $state-danger-text;
   }
 }
+
+.show_container {
+  height: 600px; 
+  width: 400px; 
+  float: left;
+}
+
+.profile {
+  width: auto
+}
+
+.show_word {
+  width: 400px; 
+  height: 100px; 
+  float: left;
+}
+
+.show_word button {
+  float: right;
+}
+
+.do_lesson {
+  width: 400px; 
+  height: 100px; 
+  float: right;
+}
+
+.do_lesson button {
+  float: left;
+}
+
+.container {
+  width: auto;
+}
+
+.point {
+  width: 900px; 
+  height: 500px; 
+  float: left;
+}
+
+.stats {
+  margin-left: 100px;
+}
