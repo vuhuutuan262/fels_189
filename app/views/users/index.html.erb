@@ -10,9 +10,11 @@
         <%= gravatar_for user, size: Settings.size_picture %>
       <% end %>
       <%= link_to user.name, user %>
-      <span class="badge" ><i class="fa fa-chevron-right icon-data">
-        <%= link_to t("delete"), user, method: :delete, 
-          data: {confirm: t("confirm_sure")} %>
+      <span class="badge" >
+        <i class="fa fa-chevron-right icon-data">
+          <%= link_to t("delete"), user, method: :delete,
+            data: {confirm: t("confirm_sure")} %>
+        </i>
       </span>
     </li>
   <% end %>

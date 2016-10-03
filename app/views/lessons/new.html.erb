@@ -1,0 +1,7 @@
+<%= form_for :lesson, url: lessons_path do |f| %>
+  <%= render "share/error_messages", object: @lesson %>
+  <%= f.hidden_field :user_id, value: session[:user_id] %>
+  <%= f.label :subject %>
+  <%= f.select :category_id, @categories, class: "ddList" %>
+  <%= f.submit %>
+<% end %>

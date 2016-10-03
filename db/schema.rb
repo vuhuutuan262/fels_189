@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160927032643) do
+ActiveRecord::Schema.define(version: 20161001063627) do
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "content"
@@ -27,12 +27,23 @@ ActiveRecord::Schema.define(version: 20160927032643) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "lesson_words", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "lesson_id"
+    t.integer  "word_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lesson_id"], name: "index_lesson_words_on_lesson_id", using: :btree
+    t.index ["word_id"], name: "index_lesson_words_on_word_id", using: :btree
+  end
+
   create_table "lessons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "users_id"
-    t.integer  "categories_id"
+    t.integer  "user_id"
+    t.integer  "category_id"
     t.boolean  "is_status"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["category_id"], name: "index_lessons_on_category_id", using: :btree
+    t.index ["user_id"], name: "index_lessons_on_user_id", using: :btree
   end
 
   create_table "microposts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -50,11 +61,15 @@ ActiveRecord::Schema.define(version: 20160927032643) do
   end
 
   create_table "results", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "answer_id"
-    t.integer  "words_id"
     t.integer  "lesson_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "word_id"
+    t.integer  "answer_id"
+    t.boolean  "is_correct", default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["answer_id"], name: "index_results_on_answer_id", using: :btree
+    t.index ["lesson_id"], name: "index_results_on_lesson_id", using: :btree
+    t.index ["word_id"], name: "index_results_on_word_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -76,5 +91,12 @@ ActiveRecord::Schema.define(version: 20160927032643) do
   end
 
   add_foreign_key "answers", "words"
+  add_foreign_key "lesson_words", "lessons"
+  add_foreign_key "lesson_words", "words"
+  add_foreign_key "lessons", "categories"
+  add_foreign_key "lessons", "users"
+  add_foreign_key "results", "answers"
+  add_foreign_key "results", "lessons"
+  add_foreign_key "results", "words"
   add_foreign_key "words", "categories"
 end
