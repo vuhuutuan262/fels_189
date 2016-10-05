@@ -2,13 +2,18 @@ class UsersController < ApplicationController
   before_action :logged_in_user, except: [:new, :create]
   before_action :find_user, except: [:new, :create, :index]
   before_action :correct_user, only: [:edit, :update]
-  before_action :verify_admin, only: [:index, :destroy]
+  before_action :verify_admin, only: [:destroy]
 
   def index
     @users = User.all.paginate page: params[:page], per_page: Settings.per
   end
 
   def show
+    @relationship = if current_user.following? @user
+      current_user.active_relationships.find_by followed_id: @user.id
+    else
+      current_user.active_relationships.build
+    end
   end
 
   def new

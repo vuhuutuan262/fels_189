@@ -2,21 +2,6 @@
 <h1><%= t "all_users" %></h1>
 
 <ul class="list-group product-category-all">
-  <% @users.each do |user| %>
-    <li class="list-group-item">
-      <% if user.avatar? %>
-        <%= link_to image_avatar(user, Settings.size_avatar), "#" %>
-      <% else %> 
-        <%= gravatar_for user, size: Settings.size_picture %>
-      <% end %>
-      <%= link_to user.name, user %>
-      <span class="badge" >
-        <i class="fa fa-chevron-right icon-data">
-          <%= link_to t("delete"), user, method: :delete,
-            data: {confirm: t("confirm_sure")} %>
-        </i>
-      </span>
-    </li>
-  <% end %>
+  <%= render @users %>
 </ul>
 <%= will_paginate %>

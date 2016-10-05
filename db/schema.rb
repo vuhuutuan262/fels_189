@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161001063627) do
+ActiveRecord::Schema.define(version: 20160930031416) do
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "content"
@@ -25,15 +25,6 @@ ActiveRecord::Schema.define(version: 20161001063627) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "lesson_words", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "lesson_id"
-    t.integer  "word_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["lesson_id"], name: "index_lesson_words_on_lesson_id", using: :btree
-    t.index ["word_id"], name: "index_lesson_words_on_word_id", using: :btree
   end
 
   create_table "lessons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -58,6 +49,9 @@ ActiveRecord::Schema.define(version: 20161001063627) do
     t.integer  "followed_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["followed_id"], name: "index_relationships_on_followed_id", using: :btree
+    t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true, using: :btree
+    t.index ["follower_id"], name: "index_relationships_on_follower_id", using: :btree
   end
 
   create_table "results", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -91,8 +85,6 @@ ActiveRecord::Schema.define(version: 20161001063627) do
   end
 
   add_foreign_key "answers", "words"
-  add_foreign_key "lesson_words", "lessons"
-  add_foreign_key "lesson_words", "words"
   add_foreign_key "lessons", "categories"
   add_foreign_key "lessons", "users"
   add_foreign_key "results", "answers"
