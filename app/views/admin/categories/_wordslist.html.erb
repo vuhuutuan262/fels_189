@@ -1,0 +1,13 @@
+<div class="div3-admin-content">
+  <div class="div4-admin-content" %></div>
+  <% @words.each do |f| %>
+    <%= link_to "" do %>
+      <div class="div-words-show-admin">
+        <%= f.title %>
+      </div>
+    <% end %>
+  <% end %>
+  <div class="div-space-word-show-admin" %>
+    <center><%= will_paginate @words %></center>
+  </div>
+</div>

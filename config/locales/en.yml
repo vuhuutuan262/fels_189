@@ -63,6 +63,8 @@ en:
   required-two-answers: "required two answers"
   not_enough: "not enough word"
   add_lesson: "Create lesson successfully"
+  edit: "Edit"
+  del: "Delete"
 
   edit_user: "Edit user"
   save_changes: "Save changes"
@@ -73,6 +75,9 @@ en:
   all_users: "All users"
   users: "Users"
   user_deleted: "User deleted"
+  category_not_found: "Category not found"
+  update: "update_successfully"
+  add_new_word: "New Word"
 
   message:
     error: "The form contains %{error_count} errors"

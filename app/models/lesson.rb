@@ -2,7 +2,7 @@ class Lesson < ApplicationRecord
   belongs_to :user
   belongs_to :category
 
-  has_many :results
+  has_many :results, dependent: :destroy
   has_many :words, through: :results
 
   before_create :generate_results

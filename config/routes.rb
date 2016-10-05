@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get "/home", to: "static_page#user"
   namespace :admin do
     root "dash_board#index", as: :home
-    resources :categories, only: [:index, :new, :create]
+    resources :categories, except: :index
     resources :words, only: [:index, :new, :create]
   end
   resources :users

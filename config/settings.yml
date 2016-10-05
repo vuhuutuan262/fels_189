@@ -3,3 +3,4 @@ size_picture: "75x75"
 size_avatar: "75x75"
 per: 10
 words_minimum: 2
+admin_show_words: 21
