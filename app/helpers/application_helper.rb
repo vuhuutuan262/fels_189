@@ -22,4 +22,8 @@ module ApplicationHelper
     href = html_options[:href] || "#"
     link_to name, "#", onclick: onclick
   end
+
+  def image_word word, size
+    image_tag word.picture, size: size
+  end
 end

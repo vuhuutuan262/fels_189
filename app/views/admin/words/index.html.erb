@@ -1,0 +1,7 @@
+<% provide :title, t("all_word") %>
+<h1><%= t "all_word" %></h1>
+
+<ul class="list-group product-category-all">
+  <%= render @words %>
+</ul>
+<%= will_paginate %>
