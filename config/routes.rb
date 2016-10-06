@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :categories, except: :index
     resources :words, only: [:index, :new, :create]
     resources :users, only: [:index, :show, :destroy]
+    resources :words
   end
   resources :users
   get "/about", to: "static_page#about"

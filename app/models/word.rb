@@ -10,7 +10,7 @@ class Word < ApplicationRecord
   validates :title, presence: true
   validate :answers_size
   validate :check_correct_answer
-  validate  :picture_size
+  validate :picture_size
 
   accepts_nested_attributes_for :answers,
     reject_if: proc {|attributes| attributes[:content].blank?},

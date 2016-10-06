@@ -98,3 +98,6 @@ en:
   mylesson: "My Lesson"
   create_at_text: "Create At"
   time_ago: "Activity %{time_ago} ago"
+  word-edit: "Edit Word"
+  word_deleted: "Delete word successfully"
+  word_not_found: "Word not found"

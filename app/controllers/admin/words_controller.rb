@@ -1,10 +1,14 @@
 class Admin::WordsController < ApplicationController
   before_action :logged_in_user
   before_action :verify_admin
+  before_action :find_word, except: [:new, :create, :index]
 
   def index
-    @words = Word.all.paginate page: params[:page],
+    @words = Word.paginate page: params[:page],
       per_page: Settings.admin_show_words
+  end
+
+  def show
   end
 
   def new
@@ -25,9 +29,35 @@ class Admin::WordsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @word.update_attributes word_params
+      flash[:success] = t :update
+      redirect_to admin_words_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @word.destroy
+    flash[:success] = t "word_deleted"
+    redirect_to admin_words_path
+  end
+
   private
   def word_params
     params.require(:word).permit :title, :category_id, :picture,
-      answers_attributes: [:content, :is_correct, :_destroy]
+      answers_attributes: [:id, :content, :is_correct, :_destroy]
+  end
+
+  def find_word
+    @word = Word.find_by_id params[:id]
+    if @word.nil?
+      flash[:danger] = t "word_not_found"
+      redirect_to admin_words_path
+    end
   end
 end

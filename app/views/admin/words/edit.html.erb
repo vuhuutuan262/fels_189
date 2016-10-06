@@ -6,20 +6,23 @@
         <%= t "word" %>
       </div>
       <div class="row">
-        <div class="col-md-8 col-md-offset-2" id="height-600">
-          <h2><%= t "add_new_word" %></h2>
-          <%= form_for [:admin, @word], url: admin_words_path do |f| %>
+        <%= form_for [:admin, @word] do |f| %>
+          <div class="col-md-4" id="height-500">
+            <div class="div1-image-word-edit">
+              <div class="div2-image-word-edit">
+                <%= image_tag @word.picture.url, size:
+                  Settings.size_picture_words_edit if @word.picture? %>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4" id="height-600">
+            <h2><%= t "word-edit" %></h2>
             <%= render "share/error_messages", object: @word %>
             <%= f.text_field :title, placeholder: t("place_word") %></br>
             <span class="picture">
               <%= f.file_field :picture,
                 accept: "image/jpeg,image/gif, image/png" %>
             </span>
-            <% if @category_id.nil? %>
-              <%= f.select :category_id, @categories, class: "ddList" %>
-            <% else %>
-              <%= f.hidden_field :category_id, value:  "#{@category_id}" %>
-            <% end %>
             <%= f.fields_for :answers do |ff| %>
               <span class="fields">
                 <%= render "answer_fields", f: ff %>
@@ -28,9 +31,9 @@
             <%= link_to_add_fields "Add answer", f, :answers %>
             <%= hidden_field_tag "at-least-two-answers-msg",
               t("required-two-answers") %>
-            <%= f.submit t("add") %>
-          <% end %>
-        </div>
+            <%= f.submit t("edit") %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

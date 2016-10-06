@@ -8,6 +8,7 @@ deadline_minites: 11
 users_show_lessons: 9
 size_avatar_admin_show: "40"
 admin_show_user: 7
+size_picture_words_edit: 200
 
 activities:
   learned: learned
