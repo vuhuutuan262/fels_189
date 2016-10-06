@@ -1,4 +1,8 @@
 class Lesson < ApplicationRecord
+  include CreateActivity
+
+  after_create :create_activities
+
   belongs_to :user
   belongs_to :category
 
@@ -20,5 +24,9 @@ class Lesson < ApplicationRecord
   def category_word_count
     errors.add :category, I18n.t("not_enough") unless category.words.count>=
       Settings.words_minimum
+  end
+
+  def create_activities
+    create_activity Settings.activities.start_lesson, id, user_id
   end
 end
