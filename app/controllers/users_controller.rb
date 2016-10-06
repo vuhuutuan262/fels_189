@@ -5,7 +5,8 @@ class UsersController < ApplicationController
   before_action :verify_admin, only: [:destroy]
 
   def index
-    @users = User.all.paginate page: params[:page], per_page: Settings.per
+    @users = User.all.paginate page: params[:page],
+      per_page: Settings.admin_show_words
   end
 
   def show

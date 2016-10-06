@@ -8,6 +8,7 @@ class Admin::WordsController < ApplicationController
   def new
     @word = Word.new
     Settings.answers_num_default.times {@word.answers.build}
+    @category_id = params[:category_id]
     load_categories
   end
 
@@ -15,7 +16,7 @@ class Admin::WordsController < ApplicationController
     @word = Word.new word_params
     if @word.save
       flash[:success] = t "add_word"
-      redirect_to admin_words_path
+      redirect_to :back
     else
       load_categories
       render :new

@@ -11,7 +11,11 @@
           <%= form_for [:admin, @word], url: admin_words_path do |f| %>
             <%= render "share/error_messages", object: @word %>
             <%= f.text_field :title, placeholder: t("place_word") %></br>
-            <%= f.select :category_id, @categories, class: "ddList" %>
+            <% if @category_id.nil? %>
+              <%= f.select :category_id, @categories, class: "ddList" %>
+            <% else %>
+              <%= f.hidden_field :category_id, value:  "#{@category_id}" %>
+            <% end %>
             <%= f.fields_for :answers do |ff| %>
               <span class="fields">
                 <%= render "answer_fields", f: ff %>
