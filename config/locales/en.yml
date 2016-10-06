@@ -79,6 +79,12 @@ en:
   update: "update_successfully"
   add_new_word: "New Word"
 
+  time: "Times:"
+  timeout: "Times Out"
+  start: "Start"
+  finish: "Finish"
+  not_available: "Not Available"
+
   message:
     error: "The form contains %{error_count} errors"
     

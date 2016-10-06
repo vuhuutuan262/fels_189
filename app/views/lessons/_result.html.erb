@@ -1,0 +1,21 @@
+<div class="lesson_question" id="lesson-question-none">
+  <div id="div-stt">
+    <h3><span class="label label-warning" id="stt"></span></h3>
+  </div>
+  <div class="div-image-words">
+    <%= f.object.word.title %>
+  </div>
+  <div id="div-space-answer"></div>
+  <% f.object.word.answers.shuffle.each do |answer| %>
+    <div class="div-answers">
+      <label>
+        <h2>
+          <%= f.radio_button :answer_id, answer.id,
+            checked: answer == f.object.answer, class:"radio-button",
+            disabled: f.object.lesson.finish?  %>
+          <%= answer.content %>
+        </h2>
+      </label>
+    </div>
+  <% end %>
+</div>

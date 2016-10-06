@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
-  resources :lessons, only: [:index, :new, :create]
   resources :relationships, only: [:index, :create, :destroy]
+  resources :users
+  resources :lessons, except: [:destroy]
 end
