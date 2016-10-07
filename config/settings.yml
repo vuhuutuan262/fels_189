@@ -2,6 +2,7 @@ answers_num_default: 2
 size_picture: "75x75"
 size_avatar: "75x75"
 per: 10
+per_act: 7
 words_minimum: 2
 admin_show_words: 21
 deadline_minites: 11
@@ -10,8 +11,7 @@ size_avatar_admin_show: "40"
 admin_show_user: 7
 size_picture_words_edit: 200
 
-activities:
-  learned: learned
-  followed: followed
-  unfollowed: unfollowed
-  start_lesson: start lesson
+activity_type:
+  start_lesson: 1
+  follow: 2
+  unfollow: 3

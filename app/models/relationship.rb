@@ -12,10 +12,12 @@ class Relationship < ApplicationRecord
 
   private
   def create_follow_activity
-    create_activity Settings.activities.followed, followed_id, follower_id
+    create_activity Settings.activity_type.follow, 
+      self.followed_id, self.follower_id
   end
 
   def create_unfollow_activity
-    create_activity Settings.activities.unfollowed, followed_id, follower_id
+    create_activity Settings.activity_type.unfollow,
+      self.followed_id, self.follower_id
   end
 end
