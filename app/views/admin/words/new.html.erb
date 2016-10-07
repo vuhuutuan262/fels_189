@@ -24,6 +24,9 @@
             <%= link_to_add_fields "Add answer", f, :answers %>
             <%= hidden_field_tag "at-least-two-answers-msg", t("required-two-answers") %>
             <%= f.submit t("add") %>
+            <span class="picture">
+              <%= f.file_field :picture, accept: "image/jpeg,image/gif, image/png" %>
+            </span>
           <% end %>
         </div>
       </div>

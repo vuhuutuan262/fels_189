@@ -78,6 +78,7 @@ en:
   category_not_found: "Category not found"
   update: "update_successfully"
   add_new_word: "New Word"
+  all_word: "All word"
 
   time: "Times:"
   timeout: "Times Out"
