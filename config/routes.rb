@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     root "dash_board#index", as: :home
     resources :categories, except: :index
     resources :words, only: [:index, :new, :create]
+    resources :users, only: [:index, :show, :destroy]
   end
   resources :users
   get "/about", to: "static_page#about"
@@ -14,6 +15,6 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   resources :relationships, only: [:index, :create, :destroy]
-  resources :users
+  resources :users, except: :index
   resources :lessons, except: [:destroy]
 end

@@ -1,0 +1,50 @@
+<% provide :title, t("all_users") %>
+<div class="container-fluid main-container">
+  <%= render "share/admins/admin_navbar" %>
+  <div class="col-md-10 content">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <%= @user.name %>
+        <div class="div-float-right">
+          <span class="badge" ><i class="fa fa-chevron-right icon-data">
+            <%= link_to t("delete"), admin_user_path(@user), method: :delete,
+              data: {confirm: t("confirm_sure")} %></i>
+          </span>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="container">
+          <div class="row">
+            <div class="div-lesson-admin">
+              <div class="panel-heading" id="head-div-content-show-user">
+                <h4><%= t :lesson %></h4>
+              </div>
+              <div class="div-table-my-lesson">
+                <div class="content-table-my-lesson">
+                  <div class="div-my-lesson">
+                    <div class="strong-th-table-my-lesson">
+                      <h4><%= t :category %></h4>
+                    </div>
+                    <div class="strong-th-table-my-lesson">
+                      <h4><%= t :create_at_text %></h4>
+                    </div>
+                    <div class="strong-th-table-my-lesson">
+                      <h4><%= t :score %></h4>
+                    </div>
+                    <div class="button-th-table-my-lesson"></div>
+                  </div>
+                  <% @lessons.each do |f| %>
+                      <%= render "lessons/lesson", f:f %>
+                  <% end %>
+                </div>
+                <div class="div-will-paginate-my-lesson">
+                  <center><%= will_paginate @lessons %></center>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

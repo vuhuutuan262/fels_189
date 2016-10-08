@@ -6,6 +6,8 @@ words_minimum: 2
 admin_show_words: 21
 deadline_minites: 11
 users_show_lessons: 9
+size_avatar_admin_show: "40"
+admin_show_user: 7
 
 activities:
   learned: learned
