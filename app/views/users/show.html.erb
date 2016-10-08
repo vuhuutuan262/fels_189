@@ -1,6 +1,6 @@
 <div class="show_container">
   <div class="profile col-lg-6 col-sm-6">
-    <div class="card hovercard" >
+    <div class="card hovercard">
       <div class="card-background"></div>
       <div class="useravatar">
         <%= image_tag @user.avatar.url if @user.avatar? %>
@@ -9,9 +9,9 @@
         <span class="card-title"><%= @user.name %></span>
       </div>
     </div>
-	
-    <div class="btn-pref btn-group btn-group-justified btn-group-lg" 
-      role="group" aria-label="..."  >
+
+    <div class="btn-pref btn-group btn-group-justified btn-group-lg"
+      role="group" aria-label="..." >
       <div class="btn-group" role="group">
         <button type="button" id="favorites" class="btn btn-default" 
           href="#tab2" data-toggle="tab">
@@ -19,7 +19,7 @@
           <div class="hidden-xs"><%= t "avatar" %></div>
         </button>
       </div>
-        
+
       <div class="btn-group" role="group">
         <button type="button" id="following" class="btn btn-default" 
           href="#tab3" data-toggle="tab">
@@ -43,34 +43,51 @@
       </div>
     </div>
   </div>
-
+</div>
+<div class="div-button-show-user">
   <div class="show_word" >
-    <button class="btn btn-dark icon-revealed">
-      <span class="glyphicon glyphicon-cloud-download"></span>
-      <p><%= t "listword" %></p>
-    </button>
+    <%= link_to "" do %>
+      <button class="btn btn-dark icon-revealed">
+        <span class="glyphicon glyphicon-cloud-download"></span>
+        <p><%= t :listword %></p>
+      </button>
+    <% end %>
   </div>
 
   <div class="do_lesson" >
-    <a href="lesson">
+    <%= link_to "" do %>
       <button class="btn btn-dark icon-revealed">
         <span class="glyphicon glyphicon-cloud-download"></span>
-        <p><%= t "dolesson" %></p>
+        <p><%= t :dolesson %></p>
       </button>
-    </a>
+    <% end %>
   </div>
-
-  <div class="point">
-    <div class="container">
-      <div class="list-group" >
-        <a href="#" class="list-group-item">
-          <div class="media">
-            <span class="label label-danger pull-right"></span>
-            <div class="checkbox pull-left"></div>
-            <div class="pull-left"><%= t "category" %></div>
-            <div class="media-body"><h5 class="media-heading"></h5></div>
+</div>
+<div class="div-content-show-user">
+  <div class="full-div-content-show-user">
+    <div class="panel-heading" id="head-div-content-show-user">
+      <h4><%= t :mylesson %></h4>
+    </div>
+    <div class="div-table-my-lesson">
+      <div class="content-table-my-lesson">
+        <div class="div-my-lesson">
+          <div class="strong-th-table-my-lesson">
+            <h4><%= t :category %></h4>
           </div>
-        </a>
+          <div class="strong-th-table-my-lesson">
+            <h4><%= t :create_at_text %></h4>
+          </div>
+          <div class="strong-th-table-my-lesson">
+            <h4><%= t :score %></h4>
+          </div>
+          <div class="button-th-table-my-lesson"></div>
+        </div>
+        <% @lessons.each do |f| %>
+          <%= render "lessons/lesson", f:f %>
+        <% end %>
+      </div>
+      <div class="div-will-paginate-my-lesson">
+        <center><%= will_paginate @lessons %></center>
       </div>
     </div>
   </div>

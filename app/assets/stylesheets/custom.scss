@@ -1058,7 +1058,7 @@ h1.page-header {
 
 .show_container {
   height: 600px; 
-  width: 400px; 
+  width: 30%;
   float: left;
 }
 
@@ -1067,7 +1067,7 @@ h1.page-header {
 }
 
 .show_word {
-  width: 400px; 
+  width: 40%;
   height: 100px; 
   float: left;
 }
@@ -1077,7 +1077,7 @@ h1.page-header {
 }
 
 .do_lesson {
-  width: 400px; 
+  width: 40%;
   height: 100px; 
   float: right;
 }
@@ -1098,4 +1098,92 @@ h1.page-header {
 
 .stats {
   margin-left: 100px;
+}
+
+.div-my-lesson {
+  float: left;
+  width: 100%;
+  height: 10%
+}
+
+.table-my-lesson {
+  width: 30%;
+  height: 100%;
+  float: left;
+  border-right: solid;
+  text-align: center;
+  border-bottom: inset
+}
+
+.color-red {
+  color: orangered;;
+}
+
+.table-my-lesson-button {
+  width: 10%;
+  height: 100%;
+  float: left;
+  border-bottom: inset;
+  text-align: center
+}
+
+.div-button-show-user {
+  float: left;
+  width: 70%;
+  height: 70px
+}
+
+.div-content-show-user {
+  width: 100%;
+  height: 600px
+}
+
+.full-div-content-show-user {
+  margin-top: 1%;
+  margin-left: 2%;
+  float: left;
+  width: 67%;
+  background-color: white;
+  height: 500px
+}
+
+#head-div-content-show-user {
+  border-bottom: solid;
+  border-bottom-width: thin
+}
+
+.div-table-my-lesson {
+  width: 92%;
+  margin-left: 4%;
+  height: 400px;
+  margin-top: 2%;
+  border: groove
+}
+
+.content-table-my-lesson {
+  float: left;
+  width: 100%;
+  height: 80%
+}
+
+.strong-th-table-my-lesson {
+  width: 30%;
+  height: 100%;
+  float: left;
+  border-right: solid;
+  text-align: center;
+  border-bottom: solid
+}
+
+.button-th-table-my-lesson {
+  width: 10%;
+  height: 100%;
+  float: left;
+  border-bottom: solid
+}
+
+.div-will-paginate-my-lesson {
+  float: left;
+  width: 100%;
+  height: 20%
 }
