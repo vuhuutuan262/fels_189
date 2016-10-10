@@ -1,66 +1,91 @@
-<div class="row">
-  <div class="div-space-show-lesson"></div>
-  <div id="div-lesson-categories">
-    <h2><%= @lesson.category.name %></h2>
+<% if @lesson.finish? %>
+  <div class="div-lesson-create-at">
+    <h4>
+      <%= t "created_at", time_created:
+        "#{@lesson.deadline - Settings.deadline_minites.minutes}" %>
+    </h4>
   </div>
-  <div class="div-space-show-lesson">
-    <div id="div-clock">
-      <div class="display-none">
-        <%= form_for @lesson do |f| %>
-          <%= f.text_field :deadline, value: "#{Time.now + 10.minutes }" %>
-          <%= f.submit "", id: "time" %>
-        <% end %>
-      </div>
-      <div id="time-set" class="display-block">
-        <h5><h5 class="clgt"><%= t "time" %></h5>
-        <h3 id="clock"></h3></h5>
-      </div>
-      <div id="time-out" class="display-none">
-        <h3><%= t "timeout" %></h3>
-      </div>
-    </div>
-    <div class="div-button-start-do-lesson" id="div-btn-start">
-      <button id="btnStart" class= "button_cyan btn-primary">
-        <div class="div-button-start-finish">
-          <h4><%= t "start" %></h4>
-        </div>
-      </button>
-    </div>
-    <div class="div-button-finish-do-lesson" id="div-btn-finish">
-      <button id="btnFinish" class= "button_cyan btn-danger">
-        <div class="div-button-start-finish">
-          <h4><%= t "finish" %></h4>
-        </div>
-      </button>
-    </div>
+  <div class="div-head-show-result">
+    <h2><%= t :lesson %></h2>
   </div>
-  <div class="div-space-button-next-prev">
-    <div class="div-space-button-next-prev1"></div>
-    <div id="div-button-prev"></div>
-    <div class="display-none" id="prev">
-      <button class="btn-primary btn-lg pull-left" id="btnPrev">
-        <label class="glyphicon glyphicon-arrow-left"></label>
-      </button>
-    </div>
+  <div class="div-lesson-create-at">
+    <h2><%= t :score %></h2>
+    <h3 id="answers_corrects"></h3>
   </div>
-  <div id="div-show-lesson">
+  <div class="div-result">
     <%= form_for @lesson do |f| %>
       <%= f.fields_for :results do |ff| %>
         <%= render "result", f: ff %>
       <% end %>
-      <div class="display-none">
-        <%= f.submit "", id: "save", class: "btn btn-primary" %>
-        <%= f.text_field :is_finish,  value: "true" %>
-      </div>
     <% end %>
   </div>
-  <div class="div-space-button-next-prev">
-    <div class="div-space-button-next-prev1"></div>
-    <div id="div-button-next"></div>
-    <div class="display-none" id= "next">
-      <button class="btn-primary btn-lg pull-left" id="btnNext">
-        <label class="glyphicon glyphicon-arrow-right"></label>
-      </button>
+<% else %>
+  <div class="row">
+    <div class="div-space-show-lesson"></div>
+    <div id="div-lesson-categories">
+      <h2><%= @lesson.category.name %></h2>
+      <h3><span class="label label-warning" id="stt"></span></h3>
+    </div>
+    <div class="div-space-show-lesson">
+      <div id="div-clock">
+        <div class="display-none">
+          <%= form_for @lesson do |f| %>
+            <%= f.text_field :deadline,
+              value: "#{Time.now + Settings.deadline_minites.minutes}" %>
+            <%= f.submit "", id: "time" %>
+          <% end %>
+        </div>
+        <div id="time-set" class="display-block">
+          <h5 class="clgt"><%= t "time" %></h5>
+          <h3 id="clock"></h3></h5>
+        </div>
+        <div id="time-out" class="display-none">
+          <h3><%= t "timeout" %></h3>
+        </div>
+      </div>
+      <div class="div-button-start-do-lesson" id="div-btn-start">
+        <button id="btnStart" class= "button_cyan btn-primary">
+          <div class="div-button-start-finish">
+            <h4><%= t "start" %></h4>
+          </div>
+        </button>
+      </div>
+      <div class="div-button-finish-do-lesson" id="div-btn-finish">
+        <button id="btnFinish" class= "button_cyan btn-danger">
+          <div class="div-button-start-finish">
+            <h4><%= t "finish" %></h4>
+          </div>
+        </button>
+      </div>
+    </div>
+    <div class="div-space-button-next-prev">
+      <div class="div-space-button-next-prev1"></div>
+      <div id="div-button-prev"></div>
+      <div class="display-none" id="prev">
+        <button class="btn-primary btn-lg pull-left" id="btnPrev">
+          <label class="glyphicon glyphicon-arrow-left"></label>
+        </button>
+      </div>
+    </div>
+    <div class="div-show-lesson">
+      <%= form_for @lesson do |f| %>
+        <%= f.fields_for :results do |ff| %>
+          <%= render "result", f: ff %>
+        <% end %>
+        <div class="display-none">
+          <%= f.submit "", id: "save", class: "btn btn-primary" %>
+          <%= f.text_field :is_finish, value: "true" %>
+        </div>
+      <% end %>
+    </div>
+    <div class="div-space-button-next-prev">
+      <div class="div-space-button-next-prev1"></div>
+      <div id="div-button-next"></div>
+      <div class="display-none" id= "next">
+        <button class="btn-primary btn-lg pull-left" id="btnNext">
+          <label class="glyphicon glyphicon-arrow-right"></label>
+        </button>
+      </div>
     </div>
   </div>
-</div>
+<% end %>

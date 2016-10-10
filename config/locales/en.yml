@@ -79,6 +79,8 @@ en:
   update: "update_successfully"
   add_new_word: "New Word"
   all_word: "All word"
+  lesson: "Lesson"
+  score: "Score:"
 
   time: "Times:"
   timeout: "Times Out"
@@ -90,3 +92,6 @@ en:
     error: "The form contains %{error_count} errors"
     
   confirm_sure: "Are you sure?"
+
+  created_at: "Date: %{time_created}"
+  image_size_result: "60x60"

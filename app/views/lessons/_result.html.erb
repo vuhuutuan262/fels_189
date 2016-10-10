@@ -1,18 +1,35 @@
-<div class="lesson_question" id="lesson-question-none">
+<div class="lesson_question">
   <div id="div-stt">
     <h3><span class="label label-warning" id="stt"></span></h3>
   </div>
   <div class="div-image-words">
     <%= f.object.word.title %>
   </div>
-  <div id="div-space-answer"></div>
+  <div id="div-space-answer">
+    <% if @lesson.finish? %>
+      <% if f.object.answer.nil? %>
+        <%= image_tag "false.jpg",
+          size: "#{t :image_size_result}" %>
+      <% else %>
+        <% if f.object.answer.is_correct? %>
+          <div class="answers_corrects">
+            <%= image_tag "true.jpg",
+              size: "#{t :image_size_result}" %>
+          </div>
+        <% else %>
+          <%= image_tag "false.jpg",
+            size: "#{t :image_size_result}" %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
   <% f.object.word.answers.shuffle.each do |answer| %>
     <div class="div-answers">
       <label>
         <h2>
           <%= f.radio_button :answer_id, answer.id,
             checked: answer == f.object.answer, class:"radio-button",
-            disabled: f.object.lesson.finish?  %>
+            disabled: f.object.lesson.finish? %>
           <%= answer.content %>
         </h2>
       </label>

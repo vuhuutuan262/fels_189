@@ -32,6 +32,7 @@ function add_fields(link, association, content) {
 }
 
 var time = 600;
+var stt = 1;
 function countdown() {
   window.onbeforeunload = function (e) {
     e = e || window.event;
@@ -53,47 +54,54 @@ function countdown() {
   return 1;
 }
 $(function(){
-$("#btnStart").click(function () {
-  document.getElementById("btnStart").disabled = true;
-  $("#time").click();
-  $("#div-btn-finish").show();
-  $("#div-btn-start").hide();
-  $(".lesson_question").hide();
-  $(".lesson_question:first").show();
-  $("#prev").show();
-  $("#next").show();
-  countdown();
-});
+  $("#btnStart").click(function () {
+    document.getElementById("stt").innerHTML = stt;
+    document.getElementById("btnStart").disabled = true;
+    $("#time").click();
+    $("#div-btn-finish").show();
+    $("#div-btn-start").hide();
+    $(".lesson_question").hide();
+    $(".lesson_question:first").show();
+    $("#prev").show();
+    $("#next").show();
+    $(".div-show-lesson").show();
+    countdown();
+  });
 
+  $("#btnFinish").click(function () {
+    window.onbeforeunload = null;
+    document.getElementById("btnFinish").disabled = true;
+    $("#save").click()
+    $("#time-set").hide()
+    $("#time-out").show();
+  });
 
+  $("#btnPrev").click(function () {
+    if($(".lesson_question:visible")
+      .prevAll(".lesson_question").first().length) {
+      $(".lesson_question").index($(".lesson_question:visible"));
+      $(".lesson_question:visible").prevAll(".lesson_question").first()
+        .show().nextAll(".lesson_question").first().hide();
+      stt--;
+      document.getElementById("stt").innerHTML = stt;
+    } else {
+      return false;
+    }
+  });
 
-$("#btnFinish").click(function () {
-  window.onbeforeunload = null;
-  document.getElementById("btnFinish").disabled = true;
-  $("#save").click()
-  $("#time-set").hide()
-  $("#time-out").show();
-});
+  $("#btnNext").click(function () {
+    if($(".lesson_question:visible")
+      .nextAll(".lesson_question").first().length) {
+      $(".lesson_question").index($(".lesson_question:visible"));
+      $(".lesson_question:visible").nextAll(".lesson_question").first()
+        .show().prevAll(".lesson_question").first().hide();
+      stt++;
+      document.getElementById("stt").innerHTML = stt;
+    } else {
+      return false;
+    }
+  });
 
-$("#btnPrev").click(function () {
-  if($(".lesson_question:visible")
-    .prevAll(".lesson_question").first().length) {
-    $(".lesson_question").index($(".lesson_question:visible"));
-    $(".lesson_question:visible").prevAll(".lesson_question").first()
-      .show().nextAll(".lesson_question").first().hide();
-  } else {
-    return false;
-  }
-});
-
-$("#btnNext").click(function () {
-  if($(".lesson_question:visible")
-    .nextAll(".lesson_question").first().length) {
-    $(".lesson_question").index($(".lesson_question:visible"));
-    $(".lesson_question:visible").nextAll(".lesson_question").first()
-      .show().prevAll(".lesson_question").first().hide();
-  } else {
-    return false;
-  }
-});
+  var answers_corrects = $('.answers_corrects').length;
+  document.getElementById("answers_corrects").innerHTML = answers_corrects;
 });

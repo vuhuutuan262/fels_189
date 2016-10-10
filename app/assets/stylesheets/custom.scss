@@ -68,6 +68,32 @@
   height: 500px
 }
 
+.div-result {
+  float: left;
+  height: auto;
+  margin-left: 25%
+}
+
+.div-head-show-result {
+  width: 50%;
+  float: left;
+  height: 100px;
+  text-align: center
+}
+
+.div-lesson-create-at {
+  width: 25%;
+  float: left;
+  height: 100px;
+}
+
+.div-show-lesson {
+  float: left;
+  width: 50%;
+  height: 500px;
+  display: none
+}
+
 #div-button-next {
   float: left;
   width: 40%;
