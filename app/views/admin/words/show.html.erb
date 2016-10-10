@@ -1,0 +1,39 @@
+<div class="container-fluid main-container">
+  <%= render "share/admins/admin_navbar" %>
+  <div class="col-md-10 content">
+    <div class="panel panel-default" id="height-600">
+      <div class="panel-heading">
+        <%= t "word" %>
+      </div>
+      <div class="row">
+        <%= form_for [:admin, @word] do |f| %>
+          <div class="col-md-4" id="height-500">
+            <div class="div1-image-word-edit">
+              <div class="div2-image-word-edit">
+                <%= image_tag @word.picture.url, size:
+                 "#{Settings.size_picture_words_edit}" if @word.picture? %>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4" id="height-600">
+            <h2><%= t "word-edit" %></h2>
+            <%= render "share/error_messages", object: @word %>
+            <%= f.label @word.title %></br>
+            <%= f.fields_for :answers do |ff| %>
+              <span class="fields">
+                <%= render "answer_view", f: ff %>
+              </span>
+            <% end %>
+            <div style="float: left">
+            <%= link_to t("edit"), edit_admin_word_path %>
+          </div>
+            <div style="float: right">
+            <%= link_to "destroy",  admin_word_path(@word.id),
+              method: :delete, data: {confirm: t("delete_sucess")} %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

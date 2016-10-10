@@ -1,7 +1,30 @@
-<% provide :title, t("all_word") %>
-<h1><%= t "all_word" %></h1>
-
-<ul class="list-group product-category-all">
-  <%= render @words %>
-</ul>
-<%= will_paginate %>
+<div class="container-fluid main-container">
+  <%= render "share/admins/admin_navbar" %>
+  <div class="col-md-10 content">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <%= t "word" %>
+      </div>
+      <div class="panel-body">
+        <div class="container">
+          <div class="row">
+            <div id="height150">
+              <div class="but-add-del-show-category">
+              </div>
+              <div class="div-name-admin-content">
+                <div class="list"></div>
+              </div>
+              <div class="but-add-del-show-category">
+              </div>
+              <div class="div1-admin-content">
+                <div class="div2-admin-content">
+                  <%= render "admin/categories/wordslist" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

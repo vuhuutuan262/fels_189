@@ -1,7 +1,7 @@
 <div class="div3-admin-content">
   <div class="div4-admin-content" %></div>
   <% @words.each do |f| %>
-    <%= link_to "" do %>
+    <%= link_to admin_word_path(f.id) do %>
       <div class="div-words-show-admin">
         <%= f.title %>
       </div>
