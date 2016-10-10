@@ -1,0 +1,26 @@
+<div class="div-my-lesson">
+  <div class="table-my-lesson">
+    <h5><%= f.category.name %></h5>
+  </div>
+  <div class="table-my-lesson">
+    <h5><%= time_ago_in_words f.created_at %> </h5>
+  </div>
+  <div class="table-my-lesson">
+    <h5 class="color-red"><%= f.score %></h5>
+  </div>
+  <div class="table-my-lesson-button">
+    <% if f.finish? %>
+      <%= link_to lesson_path(f.id) do %>
+        <h5 class="color-red">
+          <%= t :Done %>
+        </h5>
+      <% end %>
+    <% else %>
+      <%= link_to "" do %>
+        <button >
+          <%= t :Lesson %>
+        </button>
+      <% end %>
+    <% end %>
+  </div>
+</div>

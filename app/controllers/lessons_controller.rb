@@ -14,7 +14,7 @@ class LessonsController < ApplicationController
     @lesson = Lesson.new lesson_params
     if @lesson.save
       flash[:success] = t :add_lesson
-      redirect_to lessons_path
+      redirect_to current_user
     else
       load_categories
       render :new

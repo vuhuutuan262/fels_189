@@ -48,9 +48,11 @@ ActiveRecord::Schema.define(version: 20161005063516) do
   create_table "lessons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
     t.integer  "category_id"
-    t.boolean  "is_status"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.boolean  "is_finish",   default: false
+    t.datetime "deadline"
+    t.integer  "score"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.index ["category_id"], name: "index_lessons_on_category_id", using: :btree
     t.index ["user_id"], name: "index_lessons_on_user_id", using: :btree
   end

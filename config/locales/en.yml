@@ -95,3 +95,5 @@ en:
 
   created_at: "Date: %{time_created}"
   image_size_result: "60x60"
+  mylesson: "My Lesson"
+  create_at_text: "Create At"
