@@ -39,6 +39,6 @@ class Lesson < ApplicationRecord
   end
 
   def create_activities
-    create_activity Settings.activities.start_lesson, id, user_id
+    create_activity Settings.activity_type.start_lesson, self.id, self.user_id
   end
 end

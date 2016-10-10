@@ -38,8 +38,34 @@
     <div class="well">
       <div class="tab-content">
         <div class="tab-pane fade in active" id="tab1">
-          <h3></h3>
+          <h3><%= t "activities" %></h3>
+          <ul class="list-group">
+            <% @activities.each do |activity| %>
+              <li class="list-group-item">
+                <% if activity.start_lesson? %>
+                  <%= t "show.start_lesson", name: activity.find_user(activity.user_id).name, 
+                    id: activity.target_id, qty: activity.find_lesson.category_id %>
+                  <h6 class="ago">
+                    <%= t "message.hours", hour: time_ago_in_words(activity.created_at) %>
+                  </h6>
+                <% elsif activity.followed? %>
+                  <%= t "show.followed", follower: activity.find_user(activity.user_id).name, 
+                    followed: activity.find_user(activity.target_id).name %>
+                  <h6 class="ago">
+                    <%= t "message.hours", hour: time_ago_in_words(activity.created_at) %>
+                  </h6>
+                <% else %>
+                  <%= t "show.unfollowed", follower: activity.find_user(activity.user_id).name, 
+                    followed: activity.find_user(activity.target_id).name %>
+                  <h6 class="ago">
+                    <%= t "message.hours", hour: time_ago_in_words(activity.created_at) %>
+                  </h6>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
         </div>
+        <%= will_paginate @activities %>
       </div>
     </div>
   </div>

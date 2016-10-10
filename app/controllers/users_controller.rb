@@ -7,6 +7,8 @@ class UsersController < ApplicationController
   def show
     @lessons = current_user.lessons.paginate page: params[:page],
       per_page: Settings.users_show_lessons
+    @activities = @user.activities.order(created_at: :desc).
+      paginate page: params[:page], per_page: Settings.per_act
     @relationship = if current_user.following? @user
       current_user.active_relationships.find_by followed_id: @user.id
     else

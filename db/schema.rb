@@ -13,11 +13,11 @@
 ActiveRecord::Schema.define(version: 20161005063516) do
 
   create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name"
+    t.integer  "activity_type"
     t.integer  "target_id"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.index ["user_id"], name: "index_activities_on_user_id", using: :btree
   end
 

@@ -90,6 +90,7 @@ en:
 
   message:
     error: "The form contains %{error_count} errors"
+    hours: Posted %{hour} ago
     
   confirm_sure: "Are you sure?"
 
@@ -98,6 +99,15 @@ en:
   mylesson: "My Lesson"
   create_at_text: "Create At"
   time_ago: "Activity %{time_ago} ago"
+
   word-edit: "Edit Word"
   word_deleted: "Delete word successfully"
   word_not_found: "Word not found"
+
+  activities: "Activities"
+  learn_lesson: "Learn lesson"
+
+  show:
+    followed: "%{follower} are followed %{followed}"
+    unfollowed: "%{follower} are unfollowed %{followed}"
+    start_lesson: "%{name} are started lesson %{id} category %{qty}"
