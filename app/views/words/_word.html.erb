@@ -1,0 +1,13 @@
+<div class="div-word-user-view">
+  <div class="div-float-left">
+    <%= image_tag "#{f.picture_url}",
+      size:Settings.size_picture_words_user_view %>
+  </div>
+  <div class="div-answers-content">
+    <% f.answers.each do |ff| %>
+      <% if ff.is_correct? %>
+        <h4><%= ff.content %></h4>
+      <% end %>
+    <% end %>
+  </div>
+</div>

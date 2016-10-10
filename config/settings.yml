@@ -10,6 +10,8 @@ users_show_lessons: 9
 size_avatar_admin_show: "40"
 admin_show_user: 7
 size_picture_words_edit: 200
+size_picture_words_user_view: 120
+show_words_user_view: 8
 
 activity_type:
   start_lesson: 1
