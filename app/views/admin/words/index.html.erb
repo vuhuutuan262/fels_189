@@ -4,6 +4,13 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <%= t "word" %>
+        <%= form_tag admin_words_path, method: :get, role: "search" do %>
+          <%= text_field_tag :search_title, params[:search_title],
+            placeholder: t("search") %>
+          <button class="btn btn-default">
+            <i class="glyphicon glyphicon-search"></i>
+          </button>
+        <% end %>
       </div>
       <div class="panel-body">
         <div class="container">
