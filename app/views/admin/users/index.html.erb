@@ -1,0 +1,23 @@
+<% provide :title, t("all_users") %>
+<div class="container-fluid main-container">
+  <%= render "share/admins/admin_navbar" %>
+  <div class="col-md-10 content">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <%= t :member %>
+      </div>
+      <div class="panel-body">
+        <div class="container">
+          <div class="row">
+            <div class="div-admin-show-all-users">
+              <ul class="list-group product-category-all">
+                <%= render @user %>
+              </ul>
+            </div>
+            <center><%= will_paginate @user %></center>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

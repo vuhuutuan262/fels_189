@@ -1,0 +1,21 @@
+<li class="list-group-item">
+  <% unless user.current_user?(current_user) %>
+    <div class="div-admin-show-users">
+      <% if user.avatar? %>
+        <%= link_to image_avatar(user, Settings.size_avatar_admin_show),
+          admin_user_path(user) %>
+      <% else %>
+        <%= gravatar_for user, size: Settings.size_avatar_admin_show %>
+      <% end %>
+      <%= link_to user.name, admin_user_path(user) %>
+      <div class="div-float-right">
+        <% unless user.lessons.empty? %>
+          <h6>
+            <%= t :time_ago, time_ago:
+              "#{time_ago_in_words user.lessons.last.created_at}" %>
+          </h6>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</li>
