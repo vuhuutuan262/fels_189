@@ -17,3 +17,8 @@ activity_type:
   start_lesson: 1
   follow: 2
   unfollow: 3
+
+filter:
+  Learned: learned
+  Not_learned: not_learned
+  All: get_all

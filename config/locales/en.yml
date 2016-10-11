@@ -109,6 +109,8 @@ en:
   learn_lesson: "Learn lesson"
 
   show:
-    followed: "%{follower} are followed %{followed}"
-    unfollowed: "%{follower} are unfollowed %{followed}"
-    start_lesson: "%{name} are started lesson %{id} category %{qty}"
+    followed: "%{follower} followed %{followed}"
+    unfollowed: "%{follower} unfollowed %{followed}"
+    start_lesson: "%{name} started lesson %{id} in category %{qty}"
+  
+  filter: Filter

@@ -1,0 +1,14 @@
+<%= form_tag words_path, method: :get do %>
+  <%= select_tag "category_id", options_from_collection_for_select(
+    @categories, "id", "name", params[:category_id]),
+    include_blank: t("all_word"), class: "form-control" %>
+  <% Settings.filter.each do |key,value| %>
+    <%= label_tag value, class: "radio-inline" do %>
+      <%= radio_button_tag :filter_state, value,
+        checked = (params[:filter_state] == value || 
+          params[:filter_state].blank?) %>
+      <%= key %>
+    <% end %>
+  <% end %>
+  <%= submit_tag t("filter"), class: "btn btn-success" %>
+<% end %>

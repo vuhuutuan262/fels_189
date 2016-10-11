@@ -3,7 +3,10 @@ class WordsController < ApplicationController
 
   def index
     @user = current_user
-    @word = Word.all.paginate page: params[:page],
+    @categories = Category.all
+    filter_state = params[:filter_state] || :get_all
+    @word = Word.in_category(params[:category_id]).send(filter_state,
+      current_user).paginate page: params[:page],
       per_page: Settings.show_words_user_view
   end
 
