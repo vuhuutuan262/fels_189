@@ -4,7 +4,7 @@ class Admin::WordsController < ApplicationController
   before_action :find_word, except: [:new, :create, :index]
 
   def index
-    @words = Word.paginate page: params[:page],
+    @words = word_filter.paginate page: params[:page],
       per_page: Settings.admin_show_words
   end
 
@@ -59,5 +59,9 @@ class Admin::WordsController < ApplicationController
       flash[:danger] = t "word_not_found"
       redirect_to admin_words_path
     end
+  end
+
+  def word_filter
+    Word.filter_title params[:search_title]
   end
 end

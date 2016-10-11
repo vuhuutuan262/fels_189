@@ -16,6 +16,9 @@ class Word < ApplicationRecord
     reject_if: proc {|attributes| attributes[:content].blank?},
     allow_destroy: true
 
+  scope :filter_title, -> search_title{
+    where("words.title LIKE '%#{search_title}%'")}
+
   private
   def answers_size
     errors.add :word, I18n.t("answer_size") if answers.size < 2
