@@ -1,9 +1,13 @@
 <div class="show_container">
   <div class="profile col-lg-6 col-sm-6">
-    <div class="card hovercard">
-      <div class="card-background"></div>
+    <div class="card hovercard" style="background-color: silver">
+      <div class="card-background" style="background-color: darkgray"></div>
       <div class="useravatar">
-        <%= image_tag @user.avatar.url if @user.avatar? %>
+        <% if @user.avatar? %>
+          <%= image_tag @user.avatar.url %>
+        <% else %>
+          <%= gravatar_for @user %>
+        <% end %>
       </div>
       <div class="card-info">
         <span class="card-title"><%= @user.name %></span>
@@ -13,21 +17,25 @@
     <div class="btn-pref btn-group btn-group-justified btn-group-lg"
       role="group" aria-label="..." >
       <div class="btn-group" role="group">
-        <button type="button" id="favorites" class="btn btn-default" 
-          href="#tab2" data-toggle="tab">
+        <div  id="favorites" class="btn btn-default"
+           data-toggle="tab">
           <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
           <div class="hidden-xs"><%= t "avatar" %></div>
-        </button>
+        </div>
       </div>
 
       <div class="btn-group" role="group">
-        <button type="button" id="following" class="btn btn-default" 
-          href="#tab3" data-toggle="tab">
+        <div id="following" class="btn btn-default"
+           data-toggle="tab">
           <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
           <div class="hidden-xs">
-            <%= render "follow_form" unless current_user.current_user?(@user) %>
+            <% if current_user.current_user?(@user) %>
+              <%= t "user" %>
+            <% else %>
+              <%= render "follow_form"%>
+            <% end %>
           </div>
-        </button>
+        </div>
       </div>
     </div>
 
@@ -39,7 +47,7 @@
       <div class="tab-content">
         <div class="tab-pane fade in active" id="tab1">
           <h3><%= t "activities" %></h3>
-          <ul class="list-group">
+          <ul class="list-group" style="height: 200px;overflow:auto">
             <% @activities.each do |activity| %>
               <li class="list-group-item">
                 <% if activity.start_lesson? %>
@@ -65,7 +73,6 @@
             <% end %>
           </ul>
         </div>
-        <%= will_paginate @activities %>
       </div>
     </div>
   </div>
@@ -81,7 +88,7 @@
   </div>
 
   <div class="do_lesson" >
-    <%= link_to "" do %>
+    <%= link_to new_lesson_path do %>
       <button class="btn btn-dark icon-revealed">
         <span class="glyphicon glyphicon-cloud-download"></span>
         <p><%= t :dolesson %></p>

@@ -1,7 +1,118 @@
-<%= form_for :lesson, url: lessons_path do |f| %>
-  <%= render "share/error_messages", object: @lesson %>
-  <%= f.hidden_field :user_id, value: session[:user_id] %>
-  <%= f.label :subject %>
-  <%= f.select :category_id, @categories, class: "ddList" %>
-  <%= f.submit %>
-<% end %>
+<div class="show_container">
+  <div class="profile col-lg-6 col-sm-6">
+    <div class="card hovercard" style="background-color: silver">
+      <div class="card-background" style="background-color: darkgray"></div>
+      <div class="useravatar">
+        <% if current_user.avatar? %>
+            <%= image_tag current_user.avatar.url %>
+        <% else %>
+            <%= gravatar_for @user %>
+        <% end %>
+      </div>
+      <div class="card-info">
+        <span class="card-title"><%= current_user.name %></span>
+      </div>
+    </div>
+
+    <div class="btn-pref btn-group btn-group-justified btn-group-lg"
+         role="group" aria-label="..." >
+      <div class="btn-group" role="group">
+        <div  id="favorites" class="btn btn-default"
+              data-toggle="tab">
+          <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+          <div class="hidden-xs"><%= t "avatar" %></div>
+        </div>
+      </div>
+
+      <div class="btn-group" role="group">
+        <div id="following" class="btn btn-default"
+             data-toggle="tab">
+          <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+          <div class="hidden-xs">
+            <% if current_user.current_user?(@user) %>
+                <%= t "user" %>
+            <% else %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="follow">
+      <%= render "share/stats" %>
+    </div>
+
+    <div class="well">
+      <div class="tab-content">
+        <div class="tab-pane fade in active" id="tab1">
+          <h3><%= t "activities" %></h3>
+          <ul class="list-group" style="height: 200px;overflow:auto">
+            <% @activities.each do |activity| %>
+                <li class="list-group-item">
+                  <% if activity.start_lesson? %>
+                      <%= t "show.start_lesson", name: activity.find_user(activity.user_id).name,
+                            id: activity.target_id, qty: activity.find_lesson.category_id %>
+                      <h6 class="ago">
+                        <%= t "message.hours", hour: time_ago_in_words(activity.created_at) %>
+                      </h6>
+                  <% elsif activity.followed? %>
+                      <%= t "show.followed", follower: activity.find_user(activity.user_id).name,
+                            followed: activity.find_user(activity.target_id).name %>
+                      <h6 class="ago">
+                        <%= t "message.hours", hour: time_ago_in_words(activity.created_at) %>
+                      </h6>
+                  <% else %>
+                      <%= t "show.unfollowed", follower: activity.find_user(activity.user_id).name,
+                            followed: activity.find_user(activity.target_id).name %>
+                      <h6 class="ago">
+                        <%= t "message.hours", hour: time_ago_in_words(activity.created_at) %>
+                      </h6>
+                  <% end %>
+                </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="div-button-show-user">
+  <center>
+    <%= form_for :lesson, url: lessons_path do |f| %>
+      <%= render "share/error_messages", object: @lesson %>
+      <%= f.hidden_field :user_id, value: session[:user_id] %>
+      <%= f.label :subject %>
+      <%= f.select :category_id, @categories, class: "ddList" %>
+      <%= f.submit %>
+    <% end %>
+  </center>
+</div>
+<div class="div-content-show-user">
+  <div class="full-div-content-show-user">
+    <div class="panel-heading" id="head-div-content-show-user">
+      <h4><%= t :mylesson %></h4>
+    </div>
+    <div class="div-table-my-lesson">
+      <div class="content-table-my-lesson">
+        <div class="div-my-lesson">
+          <div class="strong-th-table-my-lesson">
+            <h4><%= t :category %></h4>
+          </div>
+          <div class="strong-th-table-my-lesson">
+            <h4><%= t :create_at_text %></h4>
+          </div>
+          <div class="strong-th-table-my-lesson">
+            <h4><%= t :score %></h4>
+          </div>
+          <div class="button-th-table-my-lesson"></div>
+        </div>
+        <% @lessons.each do |f| %>
+            <%= render "lessons/lesson", f:f %>
+        <% end %>
+      </div>
+      <div class="div-will-paginate-my-lesson">
+        <center><%= will_paginate @lessons %></center>
+      </div>
+    </div>
+  </div>
+</div>

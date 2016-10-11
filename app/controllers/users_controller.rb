@@ -7,8 +7,7 @@ class UsersController < ApplicationController
   def show
     @lessons = current_user.lessons.paginate page: params[:page],
       per_page: Settings.users_show_lessons
-    @activities = @user.activities.order(created_at: :desc).
-      paginate page: params[:page], per_page: Settings.per_act
+    @activities = @user.activities.order(created_at: :desc)
     @relationship = if current_user.following? @user
       current_user.active_relationships.find_by followed_id: @user.id
     else
@@ -23,7 +22,6 @@ class UsersController < ApplicationController
   def create
     @user = User.new user_params
     if @user.save
-      log_in @user
       flash[:success] = t "fels"
       redirect_to @user
     else

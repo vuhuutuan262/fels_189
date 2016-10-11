@@ -6,14 +6,16 @@ class LessonsController < ApplicationController
   end
 
   def new
+    @activities = current_user.activities.order(created_at: :desc)
     @lesson = Lesson.new
     load_categories
+    @lessons = current_user.lessons.paginate page: params[:page],
+      per_page: Settings.users_show_lessons
   end
 
   def create
     @lesson = Lesson.new lesson_params
     if @lesson.save
-      flash[:success] = t :add_lesson
       redirect_to current_user
     else
       load_categories
